@@ -3,7 +3,7 @@ body {
 }
 
 .container {
-    margin: 50px;
+    margin: 50px 0px 0px;
     padding: 30px 20px;
     font-family: 'Roboto', sans-serif;
    }
@@ -119,4 +119,8 @@ padding: 0;
 
 i.fa-cloud-sun {
     font-size: 50px;
+}
+
+footer {
+    text-align: center;
 }
