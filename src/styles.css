@@ -1,0 +1,122 @@
+body {
+    background-image: linear-gradient(to top, #f0f4fc 0%, #eef1f5 100%);
+}
+
+.container {
+    margin: 50px;
+    padding: 30px 20px;
+    font-family: 'Roboto', sans-serif;
+   }
+
+.wrapper {
+    background-image: linear-gradient(to top, #8ac4d0 0%, #28527a 100%);
+    border-radius: 15px;
+    box-shadow: 7px 4px 10px rgba(0, 0, 0, 0.1);
+    height: 500px;
+    margin: 0 auto;
+    max-width: 720px;
+    padding: 40px 20px;
+  }
+
+.search {
+    padding-bottom: 30px;
+    text-align: center;
+}
+
+.search-city {
+    line-height: 1;
+    font-size: 20px;
+}
+
+.search-btn {
+    font-size: 15px;
+padding-left: 15px;
+}
+
+.location-btn {
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+.fa-search, .fa-location-arrow {
+    background-color: #7e9296;
+    border: solid 1px #7e9296;
+    border-radius: 50%;
+    box-shadow: 2px 2px rgba(0, 0, 0, 0.2);
+    color: #000000;
+    padding: 7px;
+    text-align: center;
+    transition: background-color .5s;
+}
+
+.fa-search:hover, .fa-location-arrow:hover {
+    background-color: #ffffff;
+    border-radius: 100%;
+}
+
+.col-6.weather-info {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: 43%;
+}
+
+.col-6.weather-info.icon-details {
+    margin-right: 0;
+    padding-right: 0;
+}
+
+.city-date-degree {
+    line-height: 0;
+}
+
+h5.current-city {
+    font-size: 30px;
+    font-weight: 900;
+    text-align: left;
+    text-transform: capitalize;
+}
+
+p.weather-description {
+    text-align: left;
+    }
+
+h2.degree {
+    font-size: 70px;
+    font-weight: bold;
+}
+
+#celsius, #fahrenheit, #divider {
+    font-size: 30px;
+    color: #000000;
+}
+
+span.weather-icon {
+    font-size: 80px;
+    line-height: 0;
+}
+
+i.fa-cloud {
+    margin-bottom: 10px;
+}
+
+ul.weather-details {
+list-style-type: none;
+margin: 0;
+padding: 0;
+}
+
+.row.forecast {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.forecast-day {
+    border-radius: 15px;
+    background-color: rgba(126, 146, 150, 0.2);
+    padding: 0 10px;
+}
+
+i.fa-cloud-sun {
+    font-size: 50px;
+}
