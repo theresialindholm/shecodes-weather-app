@@ -86,11 +86,27 @@ h2.degree {
     font-weight: bold;
 }
 
-#celsius, #fahrenheit, #divider {
+#celsius, #fahrenheit {
     font-size: 30px;
-    color: #000000;
+    color: #7e9296;
+    position: relative;
+    top: -30px;
 }
 
+#divider {
+font-size: 30px;
+color: #000000;
+position: relative;
+top: -30px;
+}
+
+#celsius:hover, #fahrenheit:hover {
+    color: #28537A;
+}
+
+#celsius.active, #fahrenheit.active {
+    color: #000000;
+}
 span.weather-icon {
     font-size: 80px;
     line-height: 0;

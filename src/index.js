@@ -54,6 +54,8 @@ let windElement = document.querySelector("#wind-speed");
 function convertTemp(event) {
     event.preventDefault();
     let cTemp = document.querySelector("#temp-now");
+   celsius.classList.remove("active");
+   fahrenheit.classList.add("active");
     let fTemp = (cTemp.innerHTML * 9) / 5 + 32;
     let fTempRounded = Math.round(fTemp);
     cTemp.innerHTML = `${fTempRounded}`;
@@ -62,6 +64,8 @@ function convertTemp(event) {
   function revertTemp(event) {
     event.preventDefault();
     let fTemp = document.querySelector("#temp-now");
+    celsius.classList.add("active");
+    fahrenheit.classList.remove("active");
     let cTemp = ((fTemp.innerHTML - 32) * 5) / 9;
     let cTempRounded = Math.round(cTemp);
     fTemp.innerHTML = `${cTempRounded}`;
