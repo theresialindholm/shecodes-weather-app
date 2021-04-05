@@ -38,6 +38,10 @@ descriptionElement.innerHTML = `${description}`;
   document.querySelector("#temp-now").innerHTML =
   Math.round(response.data.main.temp);
 
+  let iconElement = document.querySelector("#icon")
+  iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+
   let feels = Math.round(response.data.main.feels_like);
   let feelsElement = document.querySelector("#percieved");
   feelsElement.innerHTML = `Feels like: ${feels}°C`;
@@ -78,9 +82,6 @@ function convertTemp(event) {
   celsius.addEventListener("click", revertTemp);
 
 
-
-
-
 //Bonus point w5
 
 function showCurrentLocation(position) {
@@ -109,12 +110,6 @@ function showCurrentLocation(position) {
   let locationButton = document.querySelector("#location-btn");
   locationButton.addEventListener("click", getCurrentPosition);
   
-
-
-
-
-
-
 
 //Feature 1
 

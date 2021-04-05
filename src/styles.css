@@ -107,14 +107,6 @@ top: -30px;
 #celsius.active, #fahrenheit.active {
     color: #000000;
 }
-span.weather-icon {
-    font-size: 80px;
-    line-height: 0;
-}
-
-i.fa-cloud {
-    margin-bottom: 10px;
-}
 
 ul.weather-details {
 list-style-type: none;
