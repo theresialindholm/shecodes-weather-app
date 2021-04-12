@@ -15,13 +15,39 @@ let city = document.querySelector("#search-text-input").value
 searchCity(city);
 }
 
-
-
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", updateCity);
 
 let searchBtn = document.querySelector("#search-btn");
 searchBtn.addEventListener("click", updateCity);
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat"];
+  days.forEach(function(day){
+    forecastHTML = forecastHTML + `
+
+    <div class="col-2">
+      <div class="forecast-day" >
+        ${day}
+        <br />
+        <p class="weekly-weather-icon-">
+          <i class="fas fa-cloud-sun"></i>
+        </p>
+        10°c
+      </div>
+    </div>
+  `;
+  })
+
+        forecastHTML = forecastHTML+ `</div>`;
+        forecastElement.innerHTML = forecastHTML;
+}
+
+
+
 
 function displayTemp(response) {
 
@@ -138,3 +164,4 @@ h6.innerHTML = `${day} ${date} ${month} ${hours}:${minutes}`;
 
 
 searchCity("Stockholm");
+displayForecast();
