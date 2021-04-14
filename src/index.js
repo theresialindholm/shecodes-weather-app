@@ -21,7 +21,8 @@ form.addEventListener("submit", updateCity);
 let searchBtn = document.querySelector("#search-btn");
 searchBtn.addEventListener("click", updateCity);
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -47,7 +48,12 @@ function displayForecast() {
 }
 
 
-
+function getForecast(coordinates) {
+  
+  let apiKey = "79d26871fe6a29e52dcc85af1af380ed";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function displayTemp(response) {
 
@@ -79,6 +85,8 @@ descriptionElement.innerHTML = `${description}`;
   let wind = (response.data.wind.speed);
 let windElement = document.querySelector("#wind-speed");
   windElement.innerHTML = `Wind: ${wind}m/s`;
+
+getForecast(response.data.coord);
 }
 
 function convertTemp(event) {
@@ -164,4 +172,3 @@ h6.innerHTML = `${day} ${date} ${month} ${hours}:${minutes}`;
 
 
 searchCity("Stockholm");
-displayForecast();
