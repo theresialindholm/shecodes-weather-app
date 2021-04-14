@@ -114,8 +114,7 @@ margin: 0;
 padding: 0;
 }
 
-.row.forecast {
-    margin: 0 auto;
+.weather-forecast {
     text-align: center;
 }
 
@@ -123,10 +122,6 @@ padding: 0;
     border-radius: 15px;
     background-color: rgba(126, 146, 150, 0.2);
     padding: 0 10px;
-}
-
-i.fa-cloud-sun {
-    font-size: 50px;
 }
 
 footer {
