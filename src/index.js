@@ -1,4 +1,3 @@
-//Homework w5 Search Engine
 
 function searchCity(city) {
 
@@ -37,13 +36,14 @@ function displayForecast(response) {
   let forecastHTML = `<div class="row">`;
   
   forecast.forEach(function(forecastDay, index){
-if (index <6) {
+  if (index <6) {
 
     forecastHTML = forecastHTML + `
 
     <div class="col-2">
       <div class="forecast-day" >
-        ${formatDay(forecastDay.dt)}</div>
+        ${formatDay(forecastDay.dt)}
+      </div>
         <img src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" 
                      alt=""
                      id="icon">
@@ -52,7 +52,7 @@ if (index <6) {
         ${Math.round(forecastDay.temp.max)}° </span>
         <span class="weather-forecast-temperature-min">
         ${Math.round(forecastDay.temp.min)}° </span>
-      </div>
+        </div>
     </div>
   `;
 }
@@ -99,7 +99,7 @@ descriptionElement.innerHTML = `${description}`;
 
   let wind = (response.data.wind.speed);
 let windElement = document.querySelector("#wind-speed");
-  windElement.innerHTML = `Wind: ${wind}m/s`;
+  windElement.innerHTML = `Wind: ${Math.round(wind)}m/s`;
 
 getForecast(response.data.coord);
 }
@@ -131,8 +131,6 @@ function convertTemp(event) {
   celsius.addEventListener("click", revertTemp);
 
 
-//Bonus point w5
-
 function showCurrentLocation(position) {
     let longitude = position.coords.longitude;
     let latitude = position.coords.latitude;
@@ -159,13 +157,8 @@ function showCurrentLocation(position) {
   let locationButton = document.querySelector("#location-btn");
   locationButton.addEventListener("click", getCurrentPosition);
   
-
-//Feature 1
-
 let now = new Date();
-
 let h6 = document.querySelector("h6");
-
 let date = now.getDate();
 
 let hours = now.getHours();
@@ -184,6 +177,5 @@ let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Ok
 let month = months[now.getMonth()];
 
 h6.innerHTML = `${day} ${date} ${month} ${hours}:${minutes}`;
-
 
 searchCity("Stockholm");
