@@ -56,6 +56,8 @@ function displayForecast(response) {
     </div>
   `;
 }
+forecastMinTemp = forecastDay.temp.min;
+forecastMaxTemp = forecastDay.temp.Max;
   })
 
         forecastHTML = forecastHTML+ `</div>`;
@@ -78,12 +80,12 @@ let description = (response.data.weather[0].main);
 let descriptionElement = document.querySelector("#weather-description");
 descriptionElement.innerHTML = `${description}`;
 
-  //let temperature = Math.round(response.data.main.temp);
-  //let temperatureElement = document.querySelector("#temp-now");
-  //temperatureElement.innerHTML = `${temperature}`;
+  let temperature = Math.round(response.data.main.temp);
+  let temperatureElement = document.querySelector("#temp-now");
+  temperatureElement.innerHTML = `${temperature}`;
 
-  document.querySelector("#temp-now").innerHTML =
-  Math.round(response.data.main.temp);
+  //document.querySelector("#temp-now").innerHTML =
+  //Math.round(response.data.main.temp);
 
   let iconElement = document.querySelector("#icon")
   iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`)
@@ -91,7 +93,7 @@ descriptionElement.innerHTML = `${description}`;
 
   let feels = Math.round(response.data.main.feels_like);
   let feelsElement = document.querySelector("#percieved");
-  feelsElement.innerHTML = `Feels like: ${feels}°C`;
+  feelsElement.innerHTML = `${feels}`;
 
   let humidity = (response.data.main.humidity);
   let humidityElement = document.querySelector("#hum");
@@ -104,31 +106,72 @@ let windElement = document.querySelector("#wind-speed");
 getForecast(response.data.coord);
 }
 
-function convertTemp(event) {
+function displayFahrenheitTemp(event) {
     event.preventDefault();
-    let cTemp = document.querySelector("#temp-now");
+    let temperatureElement = document.querySelector("#temp-now");
+    let feelsLikeElement = document.querySelector("#percieved");
+    let farenheitTemperature = (celsiusTemperature*9)/5+32;
+    let farenheitFeelTemperature = (feelsTemperature*9)/5+32;
+    temperatureElement.innerHTML = Math.round(farenheitTemperature);
+    feelsLikeElement.innerHTML = Math.round(farenheitFeelTemperature);
+
    celsius.classList.remove("active");
    fahrenheit.classList.add("active");
-    let fTemp = (cTemp.innerHTML * 9) / 5 + 32;
-    let fTempRounded = Math.round(fTemp);
-    cTemp.innerHTML = `${fTempRounded}`;
+
+   let forecastMin = document.querySelectorAll(".weather-forecast-temperature-min");
+   forecastMin.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round((currentTemp * 9) / 5 + 32);
+   });
+
+   let forecastMax = document.querySelectorAll(".weather-forecast-temperature-max");
+   forecastMax.forEach(function (item) {
+    let currentTemp = item.innerHTML;
+    item.innerHTML = Math.round((currentTemp * 9) /5 +32);
+   });
+
+  celsiusLink.addEventListener("click", displayCelsiusTemp);
+  fahrenheitLink.removeEventListener("click", displayFahrenheitTemp);
+
   }
   
-  function revertTemp(event) {
+  function displayCelsiusTemp(event) {
     event.preventDefault();
-    let fTemp = document.querySelector("#temp-now");
-    celsius.classList.add("active");
-    fahrenheit.classList.remove("active");
-    let cTemp = ((fTemp.innerHTML - 32) * 5) / 9;
-    let cTempRounded = Math.round(cTemp);
-    fTemp.innerHTML = `${cTempRounded}`;
+    let temperatureElement = document.querySelector("#temp-now");
+    let feelsLikeElement = document.querySelector("#percieved");
+
+    temperatureElement.innerHTML = Math.round(celsiusTemperature);
+    feelsLikeElement.innerHTML = Math.round(feelsTemperature);
+
+  celsius.classList.remove("active");
+   fahrenheit.classList.add("active");
+
+    let forecastMin = document.querySelectorAll(".weather-forecast-temperature-min");
+    forecastMin.forEach(function (item) {
+      let currentTemp = item.innerHTML;
+      item.innerHTML = Math.round(((currentTemp - 32) *5) / 9);
+    });
+
+    let forecastMax = document.querySelectorAll(".weather-forecast-temperature-max");
+    forecastMax.forEach(function (item) {
+      let currentTemp = item.innerHTML;
+      item.innerHTML = Math.round(((currentTemp - 32) * 5) / 9);
+    });
+
+  celsiusLink.removeEventListener("click", displayCelsiusTemp);
+  fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
   }
   
-  let conversion = document.querySelector("#fahrenheit");
-  conversion.addEventListener("click", convertTemp);
+let celsiusTemperature = null;
+let feelsTemperature = null;
+let forecastMinTemp = null;
+let forecastMaxTemp = null;
+
+  let fahrenheitLink = document.querySelector("#fahrenheit");
+  fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
   
-  let celsius = document.querySelector("#celsius");
-  celsius.addEventListener("click", revertTemp);
+  let celsiusLink = document.querySelector("#celsius");
+  celsiusLink.addEventListener("click", displayCelsiusTemp);
 
 
 function showCurrentLocation(position) {
