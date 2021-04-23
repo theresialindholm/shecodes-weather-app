@@ -116,6 +116,7 @@ padding: 0;
 
 .weather-forecast {
     text-align: center;
+    font-weight: bold;
 }
 
 .forecast-day {

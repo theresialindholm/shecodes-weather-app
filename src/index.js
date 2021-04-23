@@ -35,7 +35,7 @@ function displayForecast(response) {
 
   let forecastHTML = `<div class="row">`;
   
-  forecast.forEach(function(forecastDay, index){
+  forecast.forEach(function(forecastDay, index) {
   if (index <6) {
 
     forecastHTML = forecastHTML + `
@@ -49,16 +49,17 @@ function displayForecast(response) {
                      id="icon">
         <div class="weather-forecast-temperatures">
         <span class="weather-forecast-temperature-max">
-        ${Math.round(forecastDay.temp.max)}° </span>
+        ${Math.round(forecastDay.temp.max)}</span>°
         <span class="weather-forecast-temperature-min">
-        ${Math.round(forecastDay.temp.min)}° </span>
+        |
+        ${Math.round(forecastDay.temp.min)}</span>°
         </div>
     </div>
   `;
 }
 forecastMinTemp = forecastDay.temp.min;
 forecastMaxTemp = forecastDay.temp.Max;
-  })
+  });
 
         forecastHTML = forecastHTML+ `</div>`;
         forecastElement.innerHTML = forecastHTML;
@@ -83,6 +84,7 @@ descriptionElement.innerHTML = `${description}`;
   let temperature = Math.round(response.data.main.temp);
   let temperatureElement = document.querySelector("#temp-now");
   temperatureElement.innerHTML = `${temperature}`;
+  celsiusTemperature = temperature;
 
   //document.querySelector("#temp-now").innerHTML =
   //Math.round(response.data.main.temp);
@@ -94,13 +96,14 @@ descriptionElement.innerHTML = `${description}`;
   let feels = Math.round(response.data.main.feels_like);
   let feelsElement = document.querySelector("#percieved");
   feelsElement.innerHTML = `${feels}`;
+  feelsTemperature = feels;
 
   let humidity = (response.data.main.humidity);
   let humidityElement = document.querySelector("#hum");
   humidityElement.innerHTML = `Humidity: ${humidity}%`;
 
-  let wind = (response.data.wind.speed);
-let windElement = document.querySelector("#wind-speed");
+  let wind = response.data.wind.speed;
+  let windElement = document.querySelector("#wind-speed");
   windElement.innerHTML = `Wind: ${Math.round(wind)}m/s`;
 
 getForecast(response.data.coord);
